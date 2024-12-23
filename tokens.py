@@ -5,8 +5,8 @@ load_dotenv()
 
 discord_token = getenv('DISCORD_TOKEN')
 
-webhook_url = "YOUR URL HERE"
+webhook_url = "your webhook here"
 
-item = "ITEMS TO USE"
+item = "your item here"
 
-aura = "AURA TO EQUIP"
+aura = "your aura here"

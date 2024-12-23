@@ -1,17 +1,17 @@
-import discord
-from discord.ext import commands
+import requests
 from tokens import discord_token, aura, item, webhook_url
 from time import sleep
 import os
+import keyboard
 from pyautogui import screenshot
 from ahk import AHK
 import asyncio
 
-intents = discord.Intents.default()
-bot = commands.Bot(command_prefix="/", intents=intents)
+
 
 ahk = AHK()
 
+running = False
 
 class Macro:
     
@@ -257,23 +257,38 @@ class Screenshots:
 macro = Macro()
 screenshots = Screenshots()
 
-async def send_screenshot_to_webhook(filepath, description):
-    webhook = discord.Webhook.from_url(webhook_url, adapter=discord.RequestsWebhookAdapter())
+def send_screenshot_to_webhook(filepath, description):
     with open(filepath, "rb") as file:
-        embed = discord.Embed(title=description, color=discord.Color(0x9966CC))
-        file = discord.File(file, filename=filepath)
-        embed.set_image(url=f"attachment://{filepath}")
-        await webhook.send(embed=embed, file=file)
+        payload = {
+            "content": description,
+            "embeds": [
+                {
+                    "title": description,
+                    "color": 0x9966CC,  # Amethyst color
+                    "image": {
+                        "url": f"attachment://{filepath}"
+                    }
+                }
+            ]
+        }
+        files = {
+            "file": (os.path.basename(filepath), file)
+        }
+        response = requests.post(webhook_url, json=payload, files=files)
+        if response.status_code == 204:
+            print(f"Successfully sent {description} to webhook.")
+        else:
+            print(f"Failed to send {description} to webhook. Status code: {response.status_code}")
 
 # Define the automation sequence
 def automation_sequence():
+    keyboard.wait("F1")
     macro.quest()
-    sleep(900)  # Cooldown 900 seconds
+    sleep(30)  # Cooldown 900 seconds
     macro.equip(aura=aura)  
-    sleep(900)  # Cooldown 900 seconds
+    sleep(30)  # Cooldown 900 seconds
     macro.use(item=item)  
-    sleep(900)  # Cooldown 900 seconds
-    sleep(1800)  # Cooldown 1800 seconds
+    sleep(10)  # Cooldown 1800 seconds
     screenshots.screenquest()
     send_screenshot_to_webhook("screens/stquest.png", "**1st Quest**")
     send_screenshot_to_webhook("screens/ndquest.png", "**2nd Quest**")
@@ -295,10 +310,10 @@ def start_automation():
 def stop_automation():
     global running
     running = False
-
-# Set up hotkeys
-ahk.hotkey('F1', start_automation)
-ahk.hotkey('F3', stop_automation)
+    exit()
 
 
-ahk.run()
+keyboard.add_hotkey("f1", start_automation())
+keyboard.add_hotkey("f3", stop_automation())
+
+
