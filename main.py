@@ -284,11 +284,11 @@ def send_screenshot_to_webhook(filepath, description):
 def automation_sequence():
     keyboard.wait("F1")
     macro.quest()
-    sleep(30)  # Cooldown 900 seconds
+    sleep(900)  # Cooldown 900 seconds
     macro.equip(aura=aura)  
-    sleep(30)  # Cooldown 900 seconds
+    sleep(900)  # Cooldown 900 seconds
     macro.use(item=item)  
-    sleep(10)  # Cooldown 1800 seconds
+    sleep(1800)  # Cooldown 1800 seconds
     screenshots.screenquest()
     send_screenshot_to_webhook("screens/stquest.png", "**1st Quest**")
     send_screenshot_to_webhook("screens/ndquest.png", "**2nd Quest**")
