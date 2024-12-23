@@ -1,9 +1,11 @@
 import discord
 from discord.ext import commands
-from tokens import discord_token
+from tokens import discord_token, aura, item, webhook_url
 from time import sleep
+import os
 from pyautogui import screenshot
 from ahk import AHK
+import asyncio
 
 intents = discord.Intents.default()
 bot = commands.Bot(command_prefix="/", intents=intents)
@@ -175,24 +177,128 @@ class Screenshots:
         ahk.click()
         sleep(0.5)
 
-        screenshot("stquest.png")
+        screenshot("screens/stquest.png")
 
         ahk.mouse_move(xndquest, yndquest) # Press on the 2nd Quest
         sleep(0.5)
         ahk.click()
         sleep(0.5)
 
-        screenshot("ndquest.png")
+        screenshot("screens/ndquest.png")
 
         ahk.mouse_move(xrdquest, yrdquest) # Press on the 3rd Quest
         sleep(0.5)
         ahk.click()
         sleep(0.5)
 
-        screenshot("rdquest.png")
+        screenshot("screens/rdquest.png")
 
         ahk.mouse_move(xclose, yclose)
         ahk.click() # Close the tab
         sleep(0.5)
     
+    def screenstorage(self):
+        xbutton, ybutton = 38, 404
+        xsearch, ysearch = 832, 364
 
+        xclose, yclose = 1412, 297
+
+        ahk.mouse_move(xbutton, ybutton)
+        sleep(1.5)
+        ahk.click()
+        sleep(1.5)
+
+        ahk.mouse_move(xsearch, ysearch)
+        ahk.click()
+        sleep(0.5)
+
+        screenshot("screens/aurastorage.png")
+
+        ahk.mouse_move(xsearch, ysearch)
+        ahk.click()
+        sleep(0.5)
+
+        ahk.mouse_move(xclose, yclose)
+        ahk.click()
+        sleep(0.5)
+
+    def screenitems(self):
+        xbutton, ybutton = 39, 539
+        xitems, yitems = 1268, 331
+
+        xsearch, ysearch = 845, 366
+
+
+        xclose, yclose = 1413, 296
+
+        ahk.mouse_move(xbutton, ybutton)
+        sleep(0.5)
+        ahk.click()
+
+        ahk.mouse_move(xitems, yitems)
+        sleep(0.5)
+        ahk.click()
+
+        ahk.mouse_move(xsearch, ysearch)
+        sleep(0.5)
+        ahk.click()
+
+        screenshot("screens/itemstorage.png")
+
+        ahk.mouse_move(xclose, yclose)
+        sleep(0.5)
+        ahk.click()
+
+
+
+
+
+# Initialize Macro and Screenshots objects
+macro = Macro()
+screenshots = Screenshots()
+
+async def send_screenshot_to_webhook(filepath, description):
+    webhook = discord.Webhook.from_url(webhook_url, adapter=discord.RequestsWebhookAdapter())
+    with open(filepath, "rb") as file:
+        embed = discord.Embed(title=description, color=discord.Color(0x9966CC))
+        file = discord.File(file, filename=filepath)
+        embed.set_image(url=f"attachment://{filepath}")
+        await webhook.send(embed=embed, file=file)
+
+# Define the automation sequence
+def automation_sequence():
+    macro.quest()
+    sleep(900)  # Cooldown 900 seconds
+    macro.equip(aura=aura)  
+    sleep(900)  # Cooldown 900 seconds
+    macro.use(item=item)  
+    sleep(900)  # Cooldown 900 seconds
+    sleep(1800)  # Cooldown 1800 seconds
+    screenshots.screenquest()
+    send_screenshot_to_webhook("screens/stquest.png", "**1st Quest**")
+    send_screenshot_to_webhook("screens/ndquest.png", "**2nd Quest**")
+    send_screenshot_to_webhook("screens/rdquest.png", "**3rd Quest")
+    sleep(5)  # Cooldown 5 seconds
+    screenshots.screenstorage()
+    send_screenshot_to_webhook("screens/aurastorage.png", "**Aura Storage Screenshot**")
+    sleep(5)  # Cooldown 5 seconds
+    screenshots.screenitems()
+    send_screenshot_to_webhook("screens/itemstorage.png", "**Item Storage Screenshot**")
+    sleep(5)  # Cooldown 5 seconds
+
+def start_automation():
+    global running
+    running = True
+    while running:
+        automation_sequence()
+
+def stop_automation():
+    global running
+    running = False
+
+# Set up hotkeys
+ahk.hotkey('F1', start_automation)
+ahk.hotkey('F3', stop_automation)
+
+
+ahk.run()
