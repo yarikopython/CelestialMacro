@@ -1,12 +1,9 @@
-from dotenv import load_dotenv
-from os import getenv
+import configparser
 
-load_dotenv()
+config = configparser.ConfigParser()
 
-discord_token = getenv('DISCORD_TOKEN')
+config.read("config.ini")
 
-webhook_url = "your webhook here"
-
-item = "your item here"
-
-aura = "your aura here"
+aura = config["Settings"]["auratoequip"]
+item = config["Settings"]["itemtoequip"]
+webhook_url = config["Settings"]["webhookurl"]
