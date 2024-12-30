@@ -135,6 +135,10 @@ class Macro:
         sleep(0.5)
         ahk.click()
 
+        ahk.mouse_move(xsearch, ysearch)
+        sleep(0.5)
+        ahk.click()
+
         ahk.mouse_move(xclose, yclose)
         sleep(0.5)
         ahk.click()
