@@ -1,12 +1,11 @@
-from tokens import aura, item, webhook_url
+from tokens import aura, webhook_url
 from config import settings, item_schedule, config
 from paths.macropaths import Macro
 from paths.macroscreenshots import Screenshots
 from time import sleep
 import os
-import sys, subprocess
 import keyboard
-from pyautogui import screenshot
+from colorama import Fore, Style, Back, init
 import aiohttp
 import discord
 
@@ -14,7 +13,7 @@ from ahk import AHK
 import asyncio
 import threading
 
-
+init(autoreset=True)
 running = False
 
 # Initialize Macro and Screenshots objects
@@ -37,28 +36,31 @@ async def send_screenshot_to_webhook(filepath, description):
 # macro thread, that runs all of functions
 def macro_thread():
     config.read("items_schedule.ini")
-    keyboard.wait("F1") # waiting until the F1 button is pressed
-    while True:
-        macro.quest()
-        macro.equip(aura=aura)
-        for section in config.sections(): #getting section (its only one)
-            for item, cd in config.items(section=section): #getting items and cd
-                macro.use(item=item) # using items
-                sleep(int(cd)) # cooldown
-        
-        macro.antiafk(6, 50)
-        screenshots.screenquest()
-        asyncio.run(send_screenshot_to_webhook("screens/quests.png", "**Quests Screenshot**"))
-        sleep(5)  # Cooldown 5 seconds
-        screenshots.screenstorage()
-        asyncio.run(send_screenshot_to_webhook("screens/aurastorage.png", "**Aura Storage Screenshot**"))
-        sleep(5)  # Cooldown 5 seconds
-        screenshots.screenitems()
-        asyncio.run(send_screenshot_to_webhook("screens/itemstorage.png", "**Item Storage Screenshot**"))
-        sleep(5)  # Cooldown 5 seconds
-        screenshots.biomelogs()
-        asyncio.run(send_screenshot_to_webhook("screens/biomelogs.png", "**Biome Logs**"))
-        sleep(300)
+    if keyboard.is_pressed("F1"): # waiting until the F1 button is pressed
+        while True:
+            macro.quest()
+            sleep(5.0)
+            macro.equip(aura=aura)
+            sleep(5.0)
+            for section in config.sections(): #getting section (its only one)
+                for item, cd in config.items(section=section): #getting items and cd
+                    macro.use(item=item) # using items
+                    sleep(int(cd)) # cooldown
+            
+            macro.antiafk(6, 50)
+            screenshots.screenquest()
+            asyncio.run(send_screenshot_to_webhook("screens/quests.png", "**Quests Screenshot**"))
+            sleep(5)  # Cooldown 5 seconds
+            screenshots.screenstorage()
+            asyncio.run(send_screenshot_to_webhook("screens/aurastorage.png", "**Aura Storage Screenshot**"))
+            sleep(5)  # Cooldown 5 seconds
+            screenshots.screenitems()
+            asyncio.run(send_screenshot_to_webhook("screens/itemstorage.png", "**Item Storage Screenshot**"))
+            sleep(5)  # Cooldown 5 seconds
+            screenshots.biomelogs()
+            asyncio.run(send_screenshot_to_webhook("screens/biomelogs.png", "**Biome Logs**"))
+            macro.antiafk(5, 300)
+
 
 
 def start_thread():
@@ -74,6 +76,7 @@ def monitor_stop_key():
     global running
     while True:
         if keyboard.is_pressed('F3'):
+            print(Fore.RED + "F3 was pressed, ending the programm.")
             if running:
                 os._exit(0)
         sleep(0.1)
@@ -90,19 +93,21 @@ def run():
 
 while True:
     os.system("cls")
-    print("\nWelcome to Celestial Macro VIP+ version.")
-    print("\n[1] - Run Macro")
-    print("\n[2] - Item Schedule")
-    print("\n[3] - Settings")
-    print("\n[0] - Exit")
+    print(Fore.MAGENTA + "\nWelcome to Celestial Macro VIP+ version.")
+    print(Fore.LIGHTMAGENTA_EX + "\n[1] - Run Macro")
+    print(Fore.LIGHTMAGENTA_EX + "\n[2] - Item Schedule")
+    print(Fore.LIGHTMAGENTA_EX + "\n[3] - Settings")
+    print(Fore.LIGHTMAGENTA_EX + "\n[0] - Exit")
 
     choice = int(input("\nWhat you want to choose?: "))
 
     match choice:
         
         case 1:
-            print("\n Press F1 to start macro, and F3 to stop it")
+            os.system("cls")
+            print(Fore.GREEN + "\n Press F1 to start macro, and F3 to stop it")
             run()
+            os.system("cls")
             while True:
                 sleep(0.1)
         case 2:
@@ -118,5 +123,5 @@ while True:
             os._exit(0)
         
         case _:
-            print("Unknown option.")
+            print(Fore.RED + "Unknown option.")
             sleep(5)
