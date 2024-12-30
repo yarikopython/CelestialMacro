@@ -36,13 +36,10 @@ def settings():
     
     aura = str(input("Which aura you want to be auto equipped: "))
 
-    item = str(input("Which item you want to be used: "))
-
     webhook_url = str(input("Write your webhook url to get screenshots: "))
 
 
     config.set("Settings", "AURATOEQUIP", aura)
-    config.set("Settings", "ITEMTOEQUIP", item)
     config.set("Settings", "WEBHOOKURL", webhook_url)
 
     with open("config.ini", "w") as finishconfig:

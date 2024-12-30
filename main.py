@@ -76,28 +76,41 @@ def monitor_stop_key():
     global running
     while True:
         if keyboard.is_pressed('F3'):
-            print(Fore.RED + "F3 was pressed, ending the programm.")
-            if running:
-                os._exit(0)
+            print(Fore.RED + "\nF3 was pressed, ending the programm.")
+            os._exit(0)
         sleep(0.1)
 
+def monitor_start_key():
+    while True:
+        if keyboard.is_pressed("F1"):
+            run()
+            while True:
+                sleep(0.1)
+
+ 
+
 def run():
-    monitor = threading.Thread(target=monitor_stop_key)
     macrorun = threading.Thread(target=start_thread)
 
-    monitor.start()
     macrorun.start()
 
-    monitor.join()
     macrorun.join()
 
 while True:
     os.system("cls")
     print(Fore.MAGENTA + "\nWelcome to Celestial Macro VIP+ version.")
-    print(Fore.LIGHTMAGENTA_EX + "\n[1] - Run Macro")
+    print(Fore.LIGHTMAGENTA_EX + "\n[1] - Information")
     print(Fore.LIGHTMAGENTA_EX + "\n[2] - Item Schedule")
     print(Fore.LIGHTMAGENTA_EX + "\n[3] - Settings")
     print(Fore.LIGHTMAGENTA_EX + "\n[0] - Exit")
+
+    f1_thread = threading.Thread(target=monitor_start_key)
+    f1_thread.start()
+
+    f3_thread = threading.Thread(target=monitor_stop_key)
+    f3_thread.start()
+
+
 
     choice = int(input("\nWhat you want to choose?: "))
 
@@ -113,6 +126,9 @@ while True:
         case 2:
             os.system("cls")
             item_schedule()
+
+            print(Fore.LIGHTMAGENTA_EX + "Wait until you comeback into menu")
+
             sleep(5)
             os.system("cls")
         
