@@ -38,9 +38,12 @@ def settings():
 
     webhook_url = str(input("Write your webhook url to get screenshots: "))
 
+    userid = int(input("Whats your user id? (to get pinged): "))
+
 
     config.set("Settings", "AURATOEQUIP", aura)
     config.set("Settings", "WEBHOOKURL", webhook_url)
+    config.set("Settings", "USERID", str(userid))
 
     with open("config.ini", "w") as finishconfig:
         config.write(finishconfig)

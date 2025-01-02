@@ -1,0 +1,423 @@
+{
+    "0": {
+        "Name": "Lunar",
+        "Color": "0x775BFF",
+        "Rarity": "1 in 50.000",
+        "isabove1m": "No"
+    },
+    "1": {
+        "Name": "Solar",
+        "Color": "0xFF9B0F",
+        "Rarity": "1 in 50.000",
+        "isabove1m": "No"
+    },
+    "2": {
+        "Name": "Stormal",
+        "Color": "0x888888",
+        "Rarity": "1 in 90.000",
+        "isabove1m": "No"
+    },
+    "3": {
+        "Name": "Exotic",
+        "Color": "0x38C7D9",
+        "Rarity": "1 in 99.000",
+        "isabove1m": "No"
+    },
+    "4": {
+        "Name": "Exotic: Apex",
+        "Color": "0x4BFF9C",
+        "Rarity": "1 in 49.999.50",
+        "isabove1m": "Yes"
+    },
+    "5": {
+        "Name": "Comet",
+        "Color": "0x999999",
+        "Rarity": "1 in 120.000",
+        "isabove1m": "No"
+    },
+    "6": {
+        "Name": "Jade",
+        "Color": "0x96A38",
+        "Rarity": "1 in 125.000",
+        "isabove1m": "No"
+    },
+    "7": {
+        "Name": "Aether",
+        "Color": "0x71ADB8",
+        "Rarity": "1 in 180.000",
+        "isabove1m": "No"
+    },
+    "8": {
+        "Name": "Bounded",
+        "Color": "0x2658FF",
+        "Rarity": "1 in 200.000",
+        "isabove1m": "No"
+    },
+    "9": {
+        "Name": "Bounded: Unbound",
+        "Color": "0x4E42FF",
+        "Rarity": "1 in 2.000.000",
+        "isabove1m": "Yes"
+    },
+    "10": {
+        "Name": "Celestial",
+        "Color": "0x97A2FF",
+        "Rarity": "1 in 350.000",
+        "isabove1m": "No"
+    },
+    "11": {
+        "Name": "Celestial: Divine",
+        "Color": "",
+        "Rarity": "",
+        "isabove1m": "Yes"
+    },
+    "12": {
+        "Name": "Twilight",
+        "Color": "0x5240FF",
+        "Rarity": "1 in 6.000.000",
+        "isabove1m": "Yes"
+    },
+    "13": {
+        "Name": "Twilight: Iridescent Memory",
+        "Color": "0x5C4EA1",
+        "Rarity": "1 in 60.000.000",
+        "isabove1m": "Yes"
+    },
+    "14": {
+        "Name": "Kyawhuite",
+        "Color": "0x291793",
+        "Rarity": "1 in 850.000",
+        "isabove1m": "No"
+    },
+    "15": {
+        "Name": "Arcane",
+        "Color": "0x6E96FF",
+        "Rarity": "1 in 1.000.000",
+        "isabove1m": "Yes"
+    },
+    "16": {
+        "Name": "Arcane: Legacy",
+        "Color": "",
+        "Rarity": "1 in 15.000.000",
+        "isabove1m": "Yes"
+    },
+    "17": {
+        "Name": "Arcane: Dark",
+        "Color": "0x5835FF",
+        "Rarity": "1 in 30.000.000",
+        "isabove1m": "Yes"
+    },
+    "18": {
+        "Name": "Undefined",
+        "Color": "0x313131",
+        "Rarity": "1 in 1.111.000",
+        "isabove1m": "Yes"
+    },
+    "19": {
+        "Name": "Astral",
+        "Color": "0x7A42CC",
+        "Rarity": "1 in 1.336.000",
+        "isabove1m": "Yes"
+    },
+    "20": {
+        "Name": "Gravitational",
+        "Color": "0x4F61FF",
+        "Rarity": "1 in 2.000.000",
+        "isabove1m": "Yes"
+    },
+    "21": {
+        "Name": "Virtual",
+        "Color": "0x4D8CFF",
+        "Rarity": "1 in 2.500.000",
+        "isabove1m": "Yes"
+    },
+    "22": {
+        "Name": "Savior",
+        "Color": "0xFF5682",
+        "Rarity": "1 in 3.200.000",
+        "isabove1m": "Yes"
+    },
+    "23": {
+        "Name": "Poseidon",
+        "Color": "0x0E6188",
+        "Rarity": "1 in 4.000.000",
+        "isabove1m": "Yes"
+    },
+    "24": {
+        "Name": "Zeus",
+        "Color": "0xFFFAD3",
+        "Rarity": "1 in 4.500.000",
+        "isabove1m": "Yes"
+    },
+    "25": {
+        "Name": "Galaxy",
+        "Color": "0x5142FF",
+        "Rarity": "1 in 5.000.000",
+        "isabove1m": "Yes"
+    },
+    "26": {
+        "Name": "Origin",
+        "Color": "0x5C5FFF",
+        "Rarity": "1 in 6.500.000",
+        "isabove1m": "Yes"
+    },
+    "27": {
+        "Name": "Hades",
+        "Color": "0x762500",
+        "Rarity": "1 in 6.666.666",
+        "isabove1m": "Yes"
+    },
+    "28": {
+        "Name": "Hyper-Volt",
+        "Color": "0x8D61FF",
+        "Rarity": "1 in 7.500.000",
+        "isabove1m": "Yes"
+    },
+    "29": {
+        "Name": "Nihilty",
+        "Color": "0xFFFFFF",
+        "Rarity": "1 in 9.000.000",
+        "isabove1m": "Yes"
+    },
+    "30": {
+        "Name": "Starcourge",
+        "Color": "0xFF7F7F",
+        "Rarity": "1 in 10.000.000",
+        "isabove1m": "Yes"
+    },
+    "31": {
+        "Name": "Sailor",
+        "Color": "0x749EFF",
+        "Rarity": "1 in 12.000.000",
+        "isabove1m": "Yes"
+    },
+    "32": {
+        "Name": "Sailor: Flying Dutchman",
+        "Color": "0x43814E",
+        "Rarity": "1 in 80.000.000",
+        "isabove1m": "Yes"
+    },
+    "33": {
+        "Name": "Sirius",
+        "Color": "0xFBC28B",
+        "Rarity": "1 in 14.000.000",
+        "isabove1m": "Yes"
+    },
+    "34": {
+        "Name": "Ethereal",
+        "Color": "",
+        "Rarity": "1 in 35.000.000",
+        "isabove1m": "Yes"
+    },
+    "35": {
+        "Name": "Matrix",
+        "Color": "",
+        "Rarity": "1 in 50.000.000",
+        "isabove1m": "Yes"
+    },
+    "36": {
+        "Name": "Solar: Solctice",
+        "Color": "0xF2CF17",
+        "Rarity": "1 in 5.000.000",
+        "isabove1m": "Yes"
+    },
+    "37": {
+        "Name": "Chromatic: Genesis",
+        "Color": "0xFEFEFE",
+        "Rarity": "1 in 99.999.999",
+        "isabove1m": "Yes"
+    },
+    "38": {
+        "Name": "Starcourge: Radiant",
+        "Color": "0x99C8FF",
+        "Rarity": "1 in 100.000.000",
+        "isabove1m": "Yes"
+    },
+    "39": {
+        "Name": "Overture",
+        "Color": "0x3E66D6",
+        "Rarity": "1 in 150.000.000",
+        "isabove1m": "Yes"
+    },
+    "40": {
+        "Name": "Impeached",
+        "Color": "",
+        "Rarity": "1 in 200.000.000",
+        "isabove1m": "Yes"
+    },
+    "41": {
+        "Name": "Oppression",
+        "Color": "",
+        "Rarity": "1 in 220.000.000",
+        "isabove1m": "Yes"
+    },
+    "42": {
+        "Name": "Bloodlust",
+        "Color": "",
+        "Rarity": "1 in 300.000.000",
+        "isabove1m": "Yes"
+    },
+    "43": {
+        "Name": "Archangel",
+        "Color": "0xE8C49E",
+        "Rarity": "1 in 250.000.000",
+        "isabove1m": "Yes"
+    },
+    "44": {
+        "Name": "Atlas",
+        "Color": "",
+        "Rarity": "1 in 360.000.000",
+        "isabove1m": "Yes"
+    },
+    "45": {
+        "Name": "Ruins",
+        "Color": "",
+        "Rarity": "1 in 500.000.000",
+        "isabove1m": "Yes"
+    },
+    "46": {
+        "Name": "Sovereign",
+        "Color": "",
+        "Rarity": "1 in 750.000.000",
+        "isabove1m": "Yes"
+    },
+    "47": {
+        "Name": "Aegis",
+        "Color": "",
+        "Rarity": "1 in 825.000.000",
+        "isabove1m": "Yes"
+    },
+    "48": {
+        "Name": "Lumonosity",
+        "Color": "",
+        "Rarity": "1 in 1.200.000.000",
+        "isabove1m": "Yes"
+    },
+    "49": {
+        "Name": "Lunar: Full Moon",
+        "Color": "",
+        "Rarity": "1 in 5.000.000",
+        "isabove1m": "Yes"
+    },
+    "50": {
+        "Name": "Aquatic",
+        "Color": "",
+        "Rarity": "1 in 40.000",
+        "isabove1m": "No"
+        },
+        "51": {
+        "Name": "Aquatic: Flame",
+        "Color": "",
+        "Rarity": "1 in 4.000.000",
+        "isabove1m": "Yes"
+        },
+        "52": {
+        "Name": "",
+        "Color": "",
+        "Rarity": "",
+        "isabove1m": ""
+        },
+        "53": {
+        "Name": "",
+        "Color": "",
+        "Rarity": "",
+        "isabove1m": ""
+        },
+        "54": {
+        "Name": "",
+        "Color": "",
+        "Rarity": "",
+        "isabove1m": ""
+        },
+        "55": {
+        "Name": "",
+        "Color": "",
+        "Rarity": "",
+        "isabove1m": ""
+        },
+        "56": {
+        "Name": "",
+        "Color": "",
+        "Rarity": "",
+        "isabove1m": ""
+        },
+        "57": {
+        "Name": "",
+        "Color": "",
+        "Rarity": "",
+        "isabove1m": ""
+        },
+        "58": {
+        "Name": "",
+        "Color": "",
+        "Rarity": "",
+        "isabove1m": ""
+        },
+        "59": {
+        "Name": "",
+        "Color": "",
+        "Rarity": "",
+        "isabove1m": ""
+        },
+        "60": {
+        "Name": "",
+        "Color": "",
+        "Rarity": "",
+        "isabove1m": ""
+        },
+        "61": {
+        "Name": "",
+        "Color": "",
+        "Rarity": "",
+        "isabove1m": ""
+        },
+        "62": {
+        "Name": "",
+        "Color": "",
+        "Rarity": "",
+        "isabove1m": ""
+        },
+        "63": {
+        "Name": "",
+        "Color": "",
+        "Rarity": "",
+        "isabove1m": ""
+        },
+        "64": {
+        "Name": "",
+        "Color": "",
+        "Rarity": "",
+        "isabove1m": ""
+        },
+        "65": {
+        "Name": "",
+        "Color": "",
+        "Rarity": "",
+        "isabove1m": ""
+        },
+        "66": {
+        "Name": "",
+        "Color": "",
+        "Rarity": "",
+        "isabove1m": ""
+        },
+        "67": {
+        "Name": "",
+        "Color": "",
+        "Rarity": "",
+        "isabove1m": ""
+        },
+        "68": {
+        "Name": "",
+        "Color": "",
+        "Rarity": "",
+        "isabove1m": ""
+        },
+        "69": {
+        "Name": "",
+        "Color": "",
+        "Rarity": "",
+        "isabove1m": ""
+        }
+    }
+
