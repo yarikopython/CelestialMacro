@@ -4,8 +4,8 @@ from colorama import Fore, init
 
 init(autoreset=True)
 
-current_dir = os.getcwd()
-current_dir_name = os.path.basename(current_dir)
+current_dir = os.getcwd() # getting current directory
+current_dir_name = os.path.basename(current_dir) # getting name of it
 
 repo_url = "https://github.com/yarikopython/CelestialMacro.git"
 
@@ -59,5 +59,5 @@ def get_and_install_update(url, target_folder):
     else:
         print(Fore.GREEN + "No update needed. You are on the latest version.")
 
-# Example usage
+## running it
 get_and_install_update(repo_url, current_dir_name)
