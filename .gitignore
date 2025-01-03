@@ -1,5 +1,5 @@
 __pycache__/
 .venv/
-getposition.py
+getpos.py
 devtoken.py
 *.ini

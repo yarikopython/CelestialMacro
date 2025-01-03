@@ -69,6 +69,7 @@ class Macro:
         xaura, yaura = 817, 436
         xequip, yequip = 626, 632
 
+
         xclose, yclose = 1412, 297
 
         ahk.mouse_move(xbutton, ybutton)
@@ -85,11 +86,12 @@ class Macro:
 
         ahk.mouse_move(xaura, yaura)
         ahk.click()
-        sleep(0.5)
 
+    
         ahk.mouse_move(xequip, yequip)
         ahk.click()
         sleep(0.5)
+        
 
         ahk.mouse_move(xsearch, ysearch)
         ahk.click()
