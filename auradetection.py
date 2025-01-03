@@ -88,5 +88,3 @@ def aura_detect():
                         threading.Thread(target=reset_loop, daemon=True).start()
         else:
             sleep(0.5)
-
-                    
