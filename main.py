@@ -1,5 +1,6 @@
 from tokens import aura, webhook_url
-from config import settings, item_schedule, config
+from config import settings, item_schedule
+from configparser import ConfigParser
 from paths.macromoves import Macro
 from auradetection import aura_detect
 from paths.macroscreenshots import Screenshots
@@ -30,7 +31,7 @@ async def send_screenshot_to_webhook(filepath, description):
 
 # macro thread, that runs all of functions
 def macro_thread():
-    config.read("items_schedule.ini")
+    config = ConfigParser()
     
     while True:
         macro.quest()
@@ -56,84 +57,80 @@ def macro_thread():
         asyncio.run(send_screenshot_to_webhook("screens/biomelogs.png", "**Biome Logs**"))
         macro.antiafk(5, 300)
 
+def monitor_start_key():
+    while True:
+        if keyboard.is_pressed("F1"):
+            print(Fore.GREEN + print("F1 was pressed, starting the programm."))
+            macro_thread()
+            while True:
+                sleep(0.1)
 
-
-def start_thread():
-    global running
-    running = True
-    while running:
-        macro_thread()
-
-
-
+def monitor_restart_key():
+    while True:
+        if keyboard.is_pressed("F2"):
+            print(Fore.YELLOW + "\nF2 was pressed, restarting the programm.\n")
+            os.execv(sys.executable, ['python'] + sys.argv)
 
 def monitor_stop_key():
-    global running
     while True:
         if keyboard.is_pressed('F3'):
             print(Fore.RED + "\nF3 was pressed, ending the programm.")
             os._exit(0)
         sleep(0.1)
 
-def monitor_start_key():
-    while True:
-        if keyboard.is_pressed("F1"):
-            run()
-            while True:
-                sleep(0.1)
-
- 
-
-def run():
-   
-    macrorun = threading.Thread(target=start_thread)
-
-    macrorun.start()
 
 
-    macrorun.join()
-while True:
-    os.system("cls")
-    print(Fore.MAGENTA + "\nWelcome to Celestial Macro VIP+ version.")
-    print(Fore.LIGHTMAGENTA_EX + "\n[1] - Information")
-    print(Fore.LIGHTMAGENTA_EX + "\n[2] - Item Schedule")
-    print(Fore.LIGHTMAGENTA_EX + "\n[3] - Settings")
-    print(Fore.LIGHTMAGENTA_EX + "\n[0] - Exit")
-
-    aura_detector_thread = threading.Thread(target=aura_detect)
-    aura_detector_thread.start()
-
-    f1_thread = threading.Thread(target=monitor_start_key)
-    f1_thread.start()
-
-    f3_thread = threading.Thread(target=monitor_stop_key)
-    f3_thread.start()
-
-
-
-    choice = int(input("\nWhat you want to choose?: "))
-
-    match choice:
-        
-        case 1:
+def main():
+    try:
+        while True:
             os.system("cls")
-            print(Fore.MAGENTA + "\nWelcome! This is Celestial Macro VIP+\n this macro was created for vip+ users.\n soon the GUI going be available, same as Celestial Macro (for non VIP+ users?)???")
-            os.system("cls")
-        case 2:
-            os.system("cls")
-            item_schedule()
+            print(Fore.MAGENTA + "\nWelcome to Celestial Macro VIP+ version.")
+            print(Fore.LIGHTMAGENTA_EX + "\n[1] - Information")
+            print(Fore.LIGHTMAGENTA_EX + "\n[2] - Item Schedule")
+            print(Fore.LIGHTMAGENTA_EX + "\n[3] - Settings")
+            print(Fore.LIGHTMAGENTA_EX + "\n[0] - Exit")
 
-            print(Fore.LIGHTMAGENTA_EX + "Wait until you comeback into menu")
+            aura_detector_thread = threading.Thread(target=aura_detect)
+            aura_detector_thread.start()
 
-            sleep(5)
-            os.system("cls")
-        
-        case 3:
-            settings()
-        
-        case 0:
-            os._exit(0)
-        
-        case _:
-            print(Fore.RED + "Unknown option.")
-            sleep(5)
+            f1_thread = threading.Thread(target=monitor_start_key)
+            f1_thread.start()
+
+            f2_thread = threading.Thread(target=monitor_restart_key)
+            f2_thread.start()
+
+            f3_thread = threading.Thread(target=monitor_stop_key)
+            f3_thread.start()
+
+            choice = int(input("\nWhat you want to choose?: "))
+
+            match choice:
+                
+                case 1:
+                    os.system("cls")
+                    print(Fore.MAGENTA + "\nWelcome! This is Celestial Macro VIP+\n this macro was created for vip+ users.\n soon the GUI going be available, same as Celestial Macro (for non VIP+ users?)???")
+                    sleep(5)
+                    os.system("cls")
+                case 2:
+                    os.system("cls")
+                    item_schedule()
+
+                    print(Fore.LIGHTMAGENTA_EX + "Wait until you comeback into menu")
+
+                    sleep(5)
+                    os.system("cls")
+                
+                case 3:
+                    settings()
+                
+                case 0:
+                    os._exit(0)
+                
+                case _:
+                    print(Fore.RED + "Unknown option. Please wait 5 seconds to get back into menu")
+                    sleep(5)
+    except KeyboardInterrupt:
+        os.system("cls")
+        os._exit(0)
+
+main()
