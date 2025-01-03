@@ -67,8 +67,8 @@
     },
     "11": {
         "Name": "Celestial: Divine",
-        "Color": "",
-        "Rarity": "",
+        "Color": "0x957FBA",
+        "Rarity": "1 in 7.00.000",
         "isabove1m": "Yes"
     },
     "12": {
@@ -307,15 +307,15 @@
         },
         "51": {
         "Name": "Aquatic: Flame",
-        "Color": "",
+        "Color": "0xA35625",
         "Rarity": "1 in 4.000.000",
         "isabove1m": "Yes"
         },
         "52": {
-        "Name": "",
-        "Color": "",
-        "Rarity": "",
-        "isabove1m": ""
+        "Name": "Magnetic: Reverse Polarity",
+        "Color": "0xD37D94",
+        "Rarity": "1 in 1.024.000",
+        "isabove1m": "Yes"
         },
         "53": {
         "Name": "",
