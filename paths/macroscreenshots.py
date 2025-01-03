@@ -6,14 +6,11 @@ from time import sleep
 ahk = AHK()
 
 class Screenshots:
-
+    
     def screenquest(self) -> None:
         xbutton, ybutton = 36, 602 # x and y of "Quest" button
         xdaily, ydaily = 1276, 333 # x and y of "Daily" button
 
-        xstquest, ystquest = 1388, 541
-        xndquest, yndquest = 1392, 605
-        xrdquest, yrdquest = 1390, 680
 
 
         xclose, yclose = 1412, 297
@@ -36,6 +33,7 @@ class Screenshots:
     
     def screenstorage(self) -> None:
         xbutton, ybutton = 38, 404
+        xmiddle, ymiddle = 1101, 563
         xsearch, ysearch = 832, 364
 
         xclose, yclose = 1412, 297
@@ -48,6 +46,13 @@ class Screenshots:
         ahk.mouse_move(xsearch, ysearch)
         ahk.click()
         sleep(0.5)
+
+        ahk.mouse_move(xmiddle, ymiddle)
+
+        for _ in range (5):
+            ahk.send_input("{WheelUp}")
+        
+        
 
         screenshot("screens/aurastorage.png")
 
