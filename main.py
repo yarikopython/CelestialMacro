@@ -60,7 +60,7 @@ def macro_thread():
 def monitor_start_key():
     while True:
         if keyboard.is_pressed("F1"):
-            print(Fore.GREEN + print("F1 was pressed, starting the programm."))
+            print(Fore.GREEN + "F1 was pressed, starting the programm.")
             macro_thread()
             while True:
                 sleep(0.1)
