@@ -1,27 +1,26 @@
 import configparser, os
 
-config = configparser.ConfigParser()
-
-
-
 def create_config():
+    config = configparser.ConfigParser()
     with open("config.ini", "w") as filepath:
         config.write(filepath)
 
 def create_items_file():
+    config = configparser.ConfigParser()
     with open("items_schedule.ini", "w") as filepath:
         config.write(filepath)
 
 def settings():
+    config = configparser.ConfigParser()
     name = "Settings"
     
+    if not os.path.exists("config.ini"):
+        create_config()
+
     config.read("config.ini")
 
     if not config.has_section(name):
         config.add_section(name)
-
-    if not os.path.exists("config.ini"):
-        create_config()
 
     os.system("cls")
     print("Here are your settings:\n ")
@@ -33,13 +32,9 @@ def settings():
     
     print("\n")
 
-    
     aura = str(input("Which aura you want to be auto equipped: "))
-
     webhook_url = str(input("Write your webhook url to get screenshots: "))
-
     userid = int(input("Whats your user id? (to get pinged): "))
-
 
     config.set("Settings", "AURATOEQUIP", aura)
     config.set("Settings", "WEBHOOKURL", webhook_url)
@@ -48,8 +43,8 @@ def settings():
     with open("config.ini", "w") as finishconfig:
         config.write(finishconfig)
 
-
 def save_to_ini(filepath, items_for_schedule):
+    config = configparser.ConfigParser()
     name = "Items"
 
     if not os.path.exists(filepath):
@@ -60,19 +55,17 @@ def save_to_ini(filepath, items_for_schedule):
     if name not in config.sections():
         config.add_section(name)
 
-    config["Items"] = {}
     for item, cooldown in items_for_schedule.items():
-        config["Items"][item] = str(cooldown)
+        config.set(name, item, str(cooldown))
     
     with open(filepath, "w") as finishconfig:
         config.write(finishconfig)
 
-    
-
 def item_schedule():
+    config = configparser.ConfigParser()
     filepath = "items_schedule.ini"
 
-    config.read("items_schedule.ini")
+    config.read(filepath)
 
     print("Your items that are in schedule:\n")
 
@@ -86,6 +79,7 @@ def item_schedule():
         items_amount = int(input("How many items you want to use?: "))
         if items_amount <= 0:
             print("What you want to use then?? The number of items must be greater than 0. ")
+            return
     except ValueError:
         print("Valid number")
         return
@@ -109,12 +103,6 @@ def item_schedule():
         
         items_dict[item_to_use] = cooldown
 
-        save_to_ini(filepath=filepath, items_for_schedule=items_dict)
+    save_to_ini(filepath=filepath, items_for_schedule=items_dict)
 
-        print("\nItems has been saved.\n")
-
-
-    
-
-
-
+    print("\nItems have been saved.\n")
